@@ -1,7 +1,7 @@
 # Simple program to get the OLED Screen working on the pi
 
 from board import SCL, SDA
-
+import time
 import adafruit_ssd1306
 import busio
 
@@ -13,6 +13,6 @@ display.fill(1)
 
 display.show
 
-sleep(1000)
+time.sleep(1000)
 
 display.fill(0)
