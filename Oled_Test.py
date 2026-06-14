@@ -13,8 +13,9 @@ device = sh1106(serial, width = 128, height = 64)
 
 device.clear()
 
-text = ImageText("Hello World")
-image = Image.new("1", (128, 64), 0)
+text = ImageText.Text("Hello World", font)
+text.stroke(1, 255)
+image = Image.new("1", (128, 64))
 draw = ImageDraw.Draw(image)
 
 draw.text((0, 0), text, fill=255)
