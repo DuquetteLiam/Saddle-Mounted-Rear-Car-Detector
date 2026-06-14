@@ -1,25 +1,23 @@
 # Simple program to get the OLED Screen working on the pi
 
-from board import SCL, SDA
+
 import time
 from luma.core.interface.serial import i2c
+from luma.core.render import canvas
 from luma.oled.device import sh1106 
-from PIL import Image, ImageDraw, ImageFont, ImageText
+from PIL import ImageFont
 
 
 #Initializing OlED Display
 serial = i2c(port = 1, address = 0x3C)
 device = sh1106(serial, width = 128, height = 64)
 
-device.clear()
+#device.clear()
 
-text = ImageText.Text("Hello World")
-text.stroke(1, 255)
-image = Image.new("1", (128, 64))
-draw = ImageDraw.Draw(image)
-
-draw.text((0, 0), text, fill=255)
-device.display(text)
+font = ImageFont.load_default()
+with canvas(device) as draw:
+    draw.text((0, 0), "Rear Detector", font=font, fill=255)
+    draw.text((0, 20), "System Ready", font=font, fill=255)
 
 time.sleep(5)
 
