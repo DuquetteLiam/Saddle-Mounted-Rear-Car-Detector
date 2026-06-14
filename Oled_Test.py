@@ -2,17 +2,15 @@
 
 from board import SCL, SDA
 import time
-import adafruit_ssd1306
-import busio
+from luma.core.interface.serial import i2c
+from luma.oled.device import sh1106 
 
-i2c = busio.I2C(SCL, SDA)
+serial = i2c(port = 1, address = 0x3C)
 
-display = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c)
+device = sh1106(serial, width = 128, height = 64)
 
-display.fill(1)
+device.clear()
 
-display.show
+draw.rectangle((0, 0, 127, 63), outline=255, fill=0)
 
-time.sleep(1000)
-
-display.fill(0)
+time.sleep(5)
