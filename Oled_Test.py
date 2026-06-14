@@ -15,7 +15,7 @@ device.clear()
 image = Image.new("1", (128, 64))
 draw = ImageDraw.Draw(image)
 
-draw.rectangle((0, 0, 127, 63), outline=255, fill=1)
+draw.rectangle((10, 10, 80, 40), outline=255, fill=1)
 device.display(image)
 
 time.sleep(5)
