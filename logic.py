@@ -2,7 +2,7 @@
 
 def getState(number):
     if number == 1:
-        return("No vehicle detected behind")
+        return("No Vehicle")
 
     elif number == 2:
         return("Vehicle detected behind")
@@ -11,7 +11,7 @@ def getState(number):
         return("Vehicle detected close behind")
 
     elif number == 4:
-        return("vehicle passed")
+        return("Vehicle passed")
 
     else:
         return("invalid input")

@@ -13,10 +13,17 @@ from PIL import ImageFont
 
 
 
-#Initializing OlED Display
+#OlED Display Settings
 serial = i2c(port = 1, address = 0x3C)
 device = sh1106(serial, width = 128, height = 64)
-font = ImageFont.load_default()
+
+
+#font = ImageFont.load_default()
+
+font = ImageFont.truetype(
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    16
+)
 
 def initializeDisplay():
     with canvas(device) as draw:
@@ -25,24 +32,24 @@ def initializeDisplay():
     time.sleep(2)
 
 def displayState(state):
-    if state == "No vehicle detected behind":
+    if state == "No Vehicle":
         with canvas(device) as draw:
-            draw.text((0, 0), "No vehicle detected behind", font=font, fill=255)
+            draw.text((0, 0), "No Vehicle", font=font, fill=255)
         
 
-    elif state == "Vehicle detected behind":
+    elif state == "Vehicle Behind":
         with canvas(device) as draw:
-            draw.text((0, 0), "Vehicle detected behind", font=font, fill=255)
+            draw.text((0, 0), "Vehicle Behind", font=font, fill=255)
         
 
-    elif state == "Vehicle detected close behind":
+    elif state == "Vehicle Close":
         with canvas(device) as draw:
-            draw.text((0, 0), "Vehicle detected close behind", font=font, fill=255)
+            draw.text((0, 0), "Vehicle Close", font=font, fill=255)
         
 
-    elif state == "Vehicle passed":
+    elif state == "Vehicle Passed":
         with canvas(device) as draw:
-            draw.text((0, 0), "Vehicle passed", font=font, fill=255)
+            draw.text((0, 0), "Vehicle Passed", font=font, fill=255)
 
     else:
         with canvas(device) as draw:
