@@ -18,13 +18,12 @@ serial = i2c(port = 1, address = 0x3C)
 device = sh1106(serial, width = 128, height = 64)
 
 
-
-font = ImageFont.load_default()
-with canvas(device) as draw:
-    draw.text((0, 0), "Rear Detector", font=font, fill=255)
-    draw.text((0, 20), "System Ready", font=font, fill=255)
-
-time.sleep(2)
+def initializeDisplay():
+    font = ImageFont.load_default()
+    with canvas(device) as draw:
+        draw.text((0, 0), "Rear Detector", font=font, fill=255)
+        draw.text((0, 20), "System Ready", font=font, fill=255)
+        time.sleep(5)
 
 def displayState(state):
     if state == "No vehicle detected behind":

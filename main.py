@@ -1,7 +1,9 @@
 from logic import getState
-from display import displayState
+from display import displayState, initializeDisplay
 
-while true:
+initializeDisplay()
+
+while True:
     number = input("Enter a number")
     state = getState(number)
     displayState(state)
