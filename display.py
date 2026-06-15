@@ -26,7 +26,7 @@ with canvas(device) as draw:
 
 time.sleep(2)
 
-def displayState(state)
+def displayState(state):
     if state == "No vehicle detected behind":
         with canvas(device) as draw:
             draw.text((0, 0), "No vehicle detected behind", font=font, fill=255)
