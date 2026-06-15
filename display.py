@@ -23,7 +23,7 @@ def initializeDisplay():
     with canvas(device) as draw:
         draw.text((0, 0), "Rear Detector", font=font, fill=255)
         draw.text((0, 20), "System Ready", font=font, fill=255)
-        time.sleep(5)
+        time.sleep(2)
 
 def displayState(state):
     if state == "No vehicle detected behind":
