@@ -4,6 +4,6 @@ from display import displayState, initializeDisplay
 initializeDisplay()
 
 while True:
-    number = input("Enter a number: ")
+    number = int(input("Enter a number: "))
     state = getState(number)
     displayState(state)
