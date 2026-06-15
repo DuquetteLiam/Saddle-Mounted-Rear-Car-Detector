@@ -12,7 +12,6 @@ from PIL import ImageFont
 serial = i2c(port = 1, address = 0x3C)
 device = sh1106(serial, width = 128, height = 64)
 
-#device.clear()
 
 font = ImageFont.load_default()
 with canvas(device) as draw:
@@ -20,5 +19,7 @@ with canvas(device) as draw:
     draw.text((0, 20), "System Ready", font=font, fill=255)
 
 time.sleep(5)
+
+
 
 
