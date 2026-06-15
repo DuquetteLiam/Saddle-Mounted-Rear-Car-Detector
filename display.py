@@ -44,6 +44,10 @@ def displayState(state):
         with canvas(device) as draw:
             draw.text((0, 0), "Vehicle passed", font=font, fill=255)
 
+    else:
+        with canvas(device) as draw:
+            draw.text((0, 0), "State Error", font=font, fill=255)
+
     time.sleep(5)
         
             
