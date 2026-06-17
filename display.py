@@ -6,11 +6,8 @@ import time
 from luma.core.interface.serial import i2c
 from luma.core.render import canvas
 from luma.oled.device import sh1106 
+#Display Utilities
 from PIL import ImageFont
-
-
-
-
 
 
 #OlED Display Settings
@@ -25,6 +22,7 @@ font = ImageFont.truetype(
     16
 )
 
+#Make sure the display works
 def initializeDisplay():
     with canvas(device) as draw:
         draw.text((0, 0), "Rear Detector", font=font, fill=255)
@@ -32,22 +30,22 @@ def initializeDisplay():
     time.sleep(2)
 
 def displayState(state):
-    if state == "No Vehicle":
+    if state == "NONE":
         with canvas(device) as draw:
             draw.text((0, 0), "No Vehicle", font=font, fill=255)
         
 
-    elif state == "Vehicle Behind":
+    elif state == "BEHIND":
         with canvas(device) as draw:
             draw.text((0, 0), "Vehicle Behind", font=font, fill=255)
         
 
-    elif state == "Vehicle Close":
+    elif state == "CLOSE":
         with canvas(device) as draw:
             draw.text((0, 0), "Vehicle Close", font=font, fill=255)
         
 
-    elif state == "Vehicle Passed":
+    elif state == "PASSED":
         with canvas(device) as draw:
             draw.text((0, 0), "Vehicle Passed", font=font, fill=255)
 

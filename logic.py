@@ -2,16 +2,16 @@
 
 def getState(number):
     if number == 1:
-        return("No Vehicle")
+        return("NONE")
 
     elif number == 2:
-        return("Vehicle Behind")
+        return("BEHIND")
 
     elif number == 3:
-        return("Vehicle Close")
+        return("CLOSE")
 
     elif number == 4:
-        return("Vehicle Passed")
+        return("PASSED")
 
     else:
         return("invalid input")
