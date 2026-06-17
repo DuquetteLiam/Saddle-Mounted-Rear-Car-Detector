@@ -17,9 +17,9 @@ while True:
     network_outputs = imx500.get_outputs(metadata)
     print("type: " + str(type(metadata)))
     print()
-    print("metadata: " + metadata)
+    print("metadata: " + str(metadata))
 
 
     print()
     print("type: " + str(type(network_outputs)))
-    print("output: " + network_outputs)
+    print("output: " + str(network_outputs))
