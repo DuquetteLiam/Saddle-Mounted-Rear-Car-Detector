@@ -1,9 +1,10 @@
 from picamera2 import Picamera2
-import time
-picam2 = Picamera2()
-camera_config = picam2.create_preview_configuration()
-picam2.configure(camera_config)
+from picamera2.devices import IMX500
 
-picam2.start()
-time.sleep(2)
-picam2.capture_file("/home/liam/Saddle-Mounted-Rear-Car-Detector/photos/test.jpg")
+
+imx500 = IMX500("/path/to/rpk-file")
+picam2 = Picamera2()
+config = picam2.create_video_configuration()
+picam2.start(config)
+metadata = picam2.capture_metadata()
+network_outputs = imx500.get_outputs(metadata)
