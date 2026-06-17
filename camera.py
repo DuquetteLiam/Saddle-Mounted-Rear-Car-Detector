@@ -15,11 +15,11 @@ time.sleep(5)
 while True:
     metadata = picam2.capture_metadata()
     network_outputs = imx500.get_outputs(metadata)
-    print("type: " + type(metadata))
+    print("type: " + str(type(metadata)))
     print()
     print("metadata: " + metadata)
 
 
     print()
-    print("type: " + type(network_outputs))
+    print("type: " + str(type(network_outputs)))
     print("output: " + network_outputs)
