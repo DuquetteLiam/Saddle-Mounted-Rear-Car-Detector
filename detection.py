@@ -114,3 +114,4 @@ if __name__ == "__main__":
 
     while True:
         last_results = parse_detections(picam2.capture_metadata())
+        print(last_results)
