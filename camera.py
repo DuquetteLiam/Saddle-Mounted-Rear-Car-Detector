@@ -8,10 +8,18 @@ imx500 = IMX500("/usr/share/imx500-models/imx500_network_nanodet_plus_416x416_pp
 picam2 = Picamera2()
 config = picam2.create_video_configuration()
 picam2.start(config)
-metadata = picam2.capture_metadata()
-network_outputs = imx500.get_outputs(metadata)
+
 
 time.sleep(5)
 
 while True:
-    print(network_outputs)
+    metadata = picam2.capture_metadata()
+    network_outputs = imx500.get_outputs(metadata)
+    print("type: " + type(metadata))
+    print()
+    print("metadata: " + metadata)
+
+
+    print()
+    print("type: " type(network_outputs))
+    print("output: " + network_outputs)
