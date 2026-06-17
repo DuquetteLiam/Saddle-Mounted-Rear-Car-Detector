@@ -23,3 +23,4 @@ while True:
     print()
     print("type: " + str(type(network_outputs)))
     print("output: " + str(network_outputs))
+    time.sleep(5)
