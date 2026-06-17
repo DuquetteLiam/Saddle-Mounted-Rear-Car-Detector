@@ -117,6 +117,6 @@ if __name__ == "__main__":
     while True:
         last_results = parse_detections(picam2.capture_metadata())
         for detection in last_results:
-        class_name = labels[int(detection.category)]
-        confidence = detection.conf
-        print(f"Detected: {class_name} (confidence: {confidence:.2f})")
+            class_name = labels[int(detection.category)]
+            confidence = detection.conf
+            print(f"Detected: {class_name} (confidence: {confidence:.2f})")
