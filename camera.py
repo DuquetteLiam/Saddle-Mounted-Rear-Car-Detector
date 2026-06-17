@@ -21,5 +21,5 @@ while True:
 
 
     print()
-    print("type: " type(network_outputs))
+    print("type: " + type(network_outputs))
     print("output: " + network_outputs)
