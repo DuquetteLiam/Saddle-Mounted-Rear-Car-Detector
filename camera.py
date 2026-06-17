@@ -4,7 +4,7 @@ from picamera2 import Picamera2
 from picamera2.devices import IMX500
 
 
-imx500 = IMX500("/path/to/rpk-file")
+imx500 = IMX500("/usr/share/imx500-models/imx500_network_nanodet_plus_416x416_pp.rpk")
 picam2 = Picamera2()
 config = picam2.create_video_configuration()
 picam2.start(config)
