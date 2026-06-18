@@ -8,9 +8,12 @@ initialize_detector()
 
 while True:
     detection = detect(capture_result())
-    if detection[0] == "car":
-        displayState("BEHIND")
 
+    if detection:
+        if detection[0] == "car":
+            displayState("BEHIND")
+        else:
+            displayState("NONE")
     else:
         displayState("NONE")
 
