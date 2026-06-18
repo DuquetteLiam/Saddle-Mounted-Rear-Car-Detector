@@ -1,9 +1,13 @@
 from logic import getState
 from display import displayState, initializeDisplay
+from detection import detect
 
 initializeDisplay()
 
+detection = []
+
 while True:
-    number = int(input("Enter a number: "))
-    state = getState(number)
-    displayState(state)
+    detection = detect()
+    if detection[0] == "car":
+        displayState(BEHIND)
+
