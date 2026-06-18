@@ -25,7 +25,7 @@ font = ImageFont.truetype(
 #Make sure the display works
 def initializeDisplay():
     with canvas(device) as draw:
-        draw.text((0, 0), "Rear Detector", font=font, fill=255)
+        draw.text((0, 0), "Detector", font=font, fill=255)
         draw.text((0, 20), "System Ready", font=font, fill=255)
     time.sleep(2)
 

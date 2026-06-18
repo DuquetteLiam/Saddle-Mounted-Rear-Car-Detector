@@ -1,3 +1,4 @@
+import time
 from logic import getState
 from display import displayState, initializeDisplay
 from detection import detect, capture_result, initialize_detector

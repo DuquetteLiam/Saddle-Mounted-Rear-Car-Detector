@@ -1,5 +1,5 @@
 # This file is a modified version of the original detection script found in the picamera2 library at https://github.com/raspberrypi/picamera2/blob/main/examples/imx500/imx500_object_detection_demo.py
-# I removed the argument parsing and replaced it with hardcoded values and removed preview functionality because the pi is running in headless mode
+# I removed the argument parsing and replaced it with hardcoded values and removed preview functionality because the pi is running in headless mode, I also removed the main function because it's not needed in this file.
 import sys
 from functools import lru_cache
 
