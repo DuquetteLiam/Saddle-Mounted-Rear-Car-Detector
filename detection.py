@@ -82,6 +82,15 @@ def detect(results):
 def capture_result():
     return parse_detections(picam2.capture_metadata())
 
+def initialize_detector():
+    global labels, intrinsics, picam2, imx500
+    imx500 = IMX500(MODEL_PATH)
+    intrinsics = imx500.network_intrinsics
+    picam2 = Picamera2(imx500.camera_num)
+    picam2.start(config, show_preview=False)
+    config = picam2.create_preview_configuration(controls={"FrameRate": intrinsics.inference_rate}, buffer_count=12)
+    labels = get_labels()
+
 
 if __name__ == "__main__":
 
@@ -123,8 +132,9 @@ if __name__ == "__main__":
 
     last_results = None
 
+    initialize_detector()
     labels = get_labels()
-    last_results = parse_detections(picam2.capture_metadata())
+    #last_results = parse_detections(picam2.capture_metadata())
     
                    
     
