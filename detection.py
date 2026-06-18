@@ -114,9 +114,26 @@ if __name__ == "__main__":
 
     labels = get_labels()
 
+    def detect():
+        last_results = parse_detections(picam2.capture_metadata())
+        for detection in last_results:
+            class_name = labels[int(detection.category)]
+            confidence = detection.conf
+            #filter out non-vehicle detections
+            if class_name in ["car", "truck", "bus", "motorcycle"]:
+                return detection
+                print(f"Detected: {class_name} (confidence: {confidence:.2f})")
+                
+
+            
+        
+
     while True:
         last_results = parse_detections(picam2.capture_metadata())
         for detection in last_results:
             class_name = labels[int(detection.category)]
             confidence = detection.conf
-            print(f"Detected: {class_name} (confidence: {confidence:.2f})")
+            #filter out non-vehicle detections
+            if class_name in ["car", "truck", "bus", "motorcycle"]:
+                print(detection)
+                print(f"Detected: {class_name} (confidence: {confidence:.2f})")
