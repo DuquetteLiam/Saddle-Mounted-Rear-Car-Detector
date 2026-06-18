@@ -84,19 +84,10 @@ def capture_result():
 
 def initialize_detector():
     global labels, intrinsics, picam2, imx500
+
     imx500 = IMX500(MODEL_PATH)
     intrinsics = imx500.network_intrinsics
-    picam2 = Picamera2(imx500.camera_num)
-    picam2.start(config, show_preview=False)
-    config = picam2.create_preview_configuration(controls={"FrameRate": intrinsics.inference_rate}, buffer_count=12)
-    labels = get_labels()
 
-
-if __name__ == "__main__":
-
-    # This must be called before instantiation of Picamera2
-    imx500 = IMX500(MODEL_PATH)
-    intrinsics = imx500.network_intrinsics
     if not intrinsics:
         intrinsics = NetworkIntrinsics()
         intrinsics.task = "object detection"
@@ -120,24 +111,12 @@ if __name__ == "__main__":
         print(intrinsics)
         exit()
 
-
     picam2 = Picamera2(imx500.camera_num)
-    config = picam2.create_preview_configuration(controls={"FrameRate": intrinsics.inference_rate}, buffer_count=12)
-
     imx500.show_network_fw_progress_bar()
     picam2.start(config, show_preview=False)
-
+    config = picam2.create_preview_configuration(controls={"FrameRate": intrinsics.inference_rate}, buffer_count=12)
+    labels = get_labels()
     if intrinsics.preserve_aspect_ratio:
         imx500.set_auto_aspect_ratio()
 
-    last_results = None
-
-    initialize_detector()
-    labels = get_labels()
-    #last_results = parse_detections(picam2.capture_metadata())
     
-                   
-    
-
-    while True:
-        detection = detect(last_results)
