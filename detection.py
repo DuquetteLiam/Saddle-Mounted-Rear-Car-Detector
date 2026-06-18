@@ -70,6 +70,16 @@ def get_labels():
         labels = [label for label in labels if label and label != "-"]
     return labels
 
+def detect():
+        last_results = parse_detections(picam2.capture_metadata())
+        for detection in last_results:
+            class_name = labels[int(detection.category)]
+            confidence = detection.conf
+            #filter out non-vehicle detections
+            if class_name in ["car", "truck", "bus", "motorcycle"]:
+                print(f"Detected: {class_name} (confidence: {confidence:.2f})")
+                return [class_name, confidence]
+
 
 
 if __name__ == "__main__":
@@ -114,15 +124,7 @@ if __name__ == "__main__":
 
     labels = get_labels()
 
-    def detect():
-        last_results = parse_detections(picam2.capture_metadata())
-        for detection in last_results:
-            class_name = labels[int(detection.category)]
-            confidence = detection.conf
-            #filter out non-vehicle detections
-            if class_name in ["car", "truck", "bus", "motorcycle"]:
-                print(f"Detected: {class_name} (confidence: {confidence:.2f})")
-                return [class_name, confidence]
+    
                    
         
 
