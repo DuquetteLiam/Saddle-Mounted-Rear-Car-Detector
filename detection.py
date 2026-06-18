@@ -13,7 +13,7 @@ last_detections = []
 
 # Constants
 MODEL_PATH = "/usr/share/imx500-models/imx500_network_nanodet_plus_416x416_pp.rpk"
-THRESHOLD = 0.55
+THRESHOLD = 0.50
 IOU = 0.65
 MAX_DETECTIONS = 5
 LABELS_PATH = None        # or "/path/to/labels.txt"
