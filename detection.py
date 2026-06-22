@@ -3,16 +3,14 @@
 import sys
 from functools import lru_cache
 
-import cv2
-
-from picamera2 import MappedArray, Picamera2
+from picamera2 import Picamera2
 from picamera2.devices import IMX500
 from picamera2.devices.imx500 import NetworkIntrinsics, postprocess_nanodet_detection
 
 last_detections = []
 
 # Constants
-MODEL_PATH = "/usr/share/imx500-models/imx500_network_nanodet_plus_416x416_pp.rpk"
+MODEL_PATH = "/usr/share/imx500-models/imx500_network_nanodet_plus_416x416_pp.rpk" # I chose this model because it handles post processing on the imx500 and is optimized for the imx500, it also has a good balance between accuracy and speed. It is also a smaller model which is good for the pi.
 THRESHOLD = 0.50
 IOU = 0.65
 MAX_DETECTIONS = 5
@@ -59,6 +57,8 @@ def parse_detections(metadata: dict):
     last_detections = [
         Detection(box, category, score, metadata) for box, score, category in zip(boxes, scores, classes) if score > threshold
     ]
+
+    print(f"BBox Order: {bbox_order}")
     return last_detections
 
 
