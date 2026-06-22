@@ -74,10 +74,11 @@ def detect(results):
         for detection in results:
             class_name = labels[int(detection.category)]
             confidence = detection.conf
+            bbox = detection.box
             #filter out non-vehicle detections
             if class_name in ["car", "truck", "bus", "motorcycle"]:
                 print(f"Detected: {class_name} (confidence: {confidence:.2f})")
-                return [class_name, confidence]
+                return [class_name, confidence, bbox]
             
 def capture_result():
     return parse_detections(picam2.capture_metadata())
