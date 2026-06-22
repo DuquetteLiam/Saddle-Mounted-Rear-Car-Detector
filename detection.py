@@ -77,7 +77,7 @@ def detect(results):
             bbox = detection.box
             #filter out non-vehicle detections
             if class_name in ["car", "truck", "bus", "motorcycle"]:
-                print(f"Detected: {class_name} (confidence: {confidence:.2f})")
+                print(f"Detected: {class_name} (confidence: {confidence:.2f}), box {bbox}")
                 return [class_name, confidence, bbox]
             
 def capture_result():
