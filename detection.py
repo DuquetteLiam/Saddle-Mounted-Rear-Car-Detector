@@ -2,7 +2,6 @@
 # I removed the argument parsing and replaced it with hardcoded values and removed preview functionality because the pi is running in headless mode, I also removed the main function because it's not needed in this file.
 import sys
 from functools import lru_cache
-
 from picamera2 import Picamera2
 from picamera2.devices import IMX500
 from picamera2.devices.imx500 import NetworkIntrinsics, postprocess_nanodet_detection
@@ -54,12 +53,20 @@ def parse_detections(metadata: dict):
         if bbox_order == "xy":
             boxes = boxes[:, [1, 0, 3, 2]]
 
+    # my method for calculating size of bbox is not dependent on the value bbox_order, so we can use the same code for both cases
+
     last_detections = [
         Detection(box, category, score, metadata) for box, score, category in zip(boxes, scores, classes) if score > threshold
     ]
 
-    print(f"BBox Order: {bbox_order}")
     return last_detections
+
+def calculate_bbox_size(boxes):
+    #multiplication is commutative, so as long as you calculate side lengths using x and y seperately, it doesn't matter the order if you take the absolute value
+    #boxes is either in the form [x1, y1, x2, y2,] or [y1, x1, y2, x2] depending on the value of bbox_order and the model used
+    side1 = abs(boxes[2] - boxes[0])
+    side2 = abs(boxes[3] - boxes[1])
+    return side1 * side2
 
 
 @lru_cache
