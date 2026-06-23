@@ -10,7 +10,7 @@ last_detections = []
 
 # Constants
 MODEL_PATH = "/usr/share/imx500-models/imx500_network_nanodet_plus_416x416_pp.rpk" # I chose this model because it handles post processing on the imx500 and is optimized for the imx500, it also has a good balance between accuracy and speed. It is also a smaller model which is good for the pi.
-THRESHOLD = 0.50
+THRESHOLD = 0.45
 IOU = 0.65
 MAX_DETECTIONS = 5
 LABELS_PATH = None        # or "/path/to/labels.txt"
