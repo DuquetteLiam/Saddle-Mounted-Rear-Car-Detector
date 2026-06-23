@@ -53,6 +53,6 @@ def displayState(state):
         with canvas(device) as draw:
             draw.text((0, 0), "State Error", font=font, fill=255)
 
-    time.sleep(1)
+    time.sleep(0.25)
         
             
